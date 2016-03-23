@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string>
 #include <conio.h>
-#include <windows.h>
 #include <stdlib.h>
 #include <fstream>
 using namespace std;
@@ -147,4 +146,30 @@ void Matrix::reset()
 	for (int i = 0;i < lines;i++)
 		for (int j = 0;j < columns;j++)
 			mas[i][j] = 0;
+}
+
+int main(void)
+{
+	Matrix matrix(5, 5);
+	Matrix matrix1(5, 5);
+	cout << "Write way of file '*.txt' " << endl;
+	std::string s;
+	std::getline(std::cin, s);
+	cout << "You wrote " << s << endl;
+	matrix.read_matrix(s);
+	matrix.print_matrix();
+	int *line_matrix;
+	line_matrix = matrix[2];
+	cout << "secontd line of matrix:" << endl;
+	for (int i = 0;i < matrix.get_cout_columns();i++)
+		cout << line_matrix[i] << " ";
+
+	cout << endl;
+	matrix1 = matrix*matrix;
+	cout << "New matrix after '*' :" << endl;
+	matrix1.print_matrix();
+
+	system("pause");
+
+
 }
